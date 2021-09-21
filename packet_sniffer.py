@@ -15,7 +15,7 @@ grid = Table.grid(expand=True)
 grid.add_column(justify="center", ratio=1)
 grid.add_column(justify="right")
 grid.add_row(
-    "Database Monitoring Tool",
+    "Packet Sniffer Tool",
     datetime.now().ctime().replace(":", "[blink]:[/]"),
 )
 print(Panel(grid, style="white on red"))
@@ -34,7 +34,8 @@ def logs(packet):
 	print("______________________")
 	#print(packet.show())
 	print(f"SRC_MAC: {str(packet[0].src)} DEST_MAC: {str(packet[0].dst)} TYPE: {str(packet[0].type)}")
-	print(f"psrc: {str(packet[1].psrc)} hwsrc: {str(packet[1].hwsrc)} pdst: {str(packet[1].pdst)}")
+	print(packet.show())
+	# print(f"psrc: {str(packet[1].psrc)} hwsrc: {str(packet[1].hwsrc)} pdst: {str(packet[1].pdst)}")
 	
 if proto == "all":
 	sniff(iface = net_iface ,count = num_of_pkt, timeout = time_sec, prn=logs )
